@@ -1,16 +1,34 @@
-const body=document.querySelector('#gridContainer');
-for(let i =0; i<256;i++){
-    let div = document.createElement('div')
-    div.style.cssText = 'height: 38px; width: 38px; border: black 1px solid; display: inline-block;'
-    div.classList.add(`1`)
-    body.appendChild(div)
-    div.addEventListener('mouseleave',()=>{
-        console.log("cliking")
-        div.style.backgroundColor= '#'+Math.floor(Math.random()*16777215).toString(16);
-        console.log(div.style.backgroundColor)
-    })
+const gridContainer=document.querySelector('#gridContainer');
+window.addEventListener('load', blankGrid);
+resetBtn.addEventListener('click', changeSize)
+
+//rid
+function blankGrid(){
+    fillGrid(16);
+    changeSize(16);
 }
 
-function createGrid(){
-    div.style.backgroundColor=white;
+//changesize
+
+function changeSize(numCols){
+ grid.style.gridTemplateColumns=`repeat(${numCols}, 1fr)`
 }
+//fill grid
+function fillGrid(numCols){
+    for(let i=0; numCols*numCols;i++){
+        const gridBlock=document.createElement('div');
+        gridBlock.classList.add('grid-block');
+        gridBlock.addEventListener('mouseleave', randomColor)
+        gridContainer.appendChild(gridBlock);
+    }
+}
+//randomColor
+function randomColor(){
+    div.style.backgroundColor= '#'+Math.floor(Math.random()*16777215).toString(16);
+}
+//cleargrid
+function clearGrid(){
+
+}
+
+
