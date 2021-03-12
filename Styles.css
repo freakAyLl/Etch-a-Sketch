@@ -1,9 +1,113 @@
-#gridBody{
+body{
     display: flex;
-    flex-wrap: wrap;
-    width: 640px;
-    height: 640px;
-    border: black solid 1px;
-    margin-left: auto;
-    margin-right: auto;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background-color: rgb(242, 245, 206);
+    margin-top: -30px;
+}
+
+h1{
+    font-size: 70px;
+    color: black;
+    text-shadow: 5px 5px rgb(231, 161, 161);
+}
+
+.btns{
+    display: flex;
+    flex-direction: row;
+    width: 700px;
+    height: 50px;
+    justify-content: space-evenly;
+}
+
+button{
+    width: 90px;
+    font-size: 30px;
+    background-color:rgb(231, 161, 161);
+    box-shadow: 5px 5px;
+    outline: none;
+}
+
+
+#color{
+    margin-top: 5px;
+    margin-bottom: -20px;
+    width: 80px;
+    height: 30px;
+    box-shadow: 3px 3px;
+}
+
+#color:hover{
+    transform: scale(1.1);
+}
+
+#color:active{
+    transform: scale(1.2);
+}
+
+button:hover{
+    transform: scale(1.1);
+}
+
+button:active{
+    transform: scale(1.2);
+}
+
+#sizeSelector{
+    -webkit-appearance: none;
+    background: rgb(231, 161, 161);
+    outline: none;
+    border-radius: 50px;
+    text-align: center;
+    font-size: 1.55rem;
+}
+
+.value{
+    font-size: 30px;
+    padding-left: 10px;
+    color: black;
+    text-shadow: 2px 2px white;
+
+}
+
+.grid{
+    margin-top: 50px;
+    display: inline-grid;
+    grid-template-columns: repeat(16, 2fr);
+    grid-template-rows: repeat(16, 2fr);
+    border: 5px solid white;
+    border-radius: 5px;
+    height: 575px;
+    width: 575px;
+    background-color: gray;
+    box-shadow: 10px 10px;
+}
+
+.cell{
+    background-color: white;
+    border: 1px solid black;
+}
+
+footer{
+    font-size: 25px;
+    bottom: 0;
+    justify-content: center;
+    padding-top: 50px;
+}
+
+a{
+    text-decoration: none;
+    color: black;
+}
+
+a:hover{
+    text-decoration: underline;
+}
+
+#gh-logo{
+    width: 35px;
+    height: 35px;
+    margin-bottom: -9px;
+    margin-right: 10px;
 }

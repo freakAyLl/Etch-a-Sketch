@@ -1,34 +1,77 @@
-const gridContainer=document.querySelector('#gridContainer');
-window.addEventListener('load', blankGrid);
-resetBtn.addEventListener('click', changeSize)
+const grid = document.querySelector('.grid');
 
-//rid
-function blankGrid(){
-    fillGrid(16);
-    changeSize(16);
+createGrid = () => {
+for (let i = 0; i < 256; i++) {
+    const div = document.createElement('div');
+    div.classList.add('cell');
+    div.addEventListener('mouseover', function(event){
+        event.target.style.backgroundColor = 'black';
+    })
+    grid.appendChild(div); 
 }
+};
 
-//changesize
-
-function changeSize(numCols){
- grid.style.gridTemplateColumns=`repeat(${numCols}, 1fr)`
-}
-//fill grid
-function fillGrid(numCols){
-    for(let i=0; numCols*numCols;i++){
-        const gridBlock=document.createElement('div');
-        gridBlock.classList.add('grid-block');
-        gridBlock.addEventListener('mouseleave', randomColor)
-        gridContainer.appendChild(gridBlock);
+function removeAllChildNodes(parent){
+    while(parent.firstChild){
+        parent.removeChild(parent.firstChild);
     }
 }
-//randomColor
-function randomColor(){
-    div.style.backgroundColor= '#'+Math.floor(Math.random()*16777215).toString(16);
+
+function getRandomColor(){
+    let letters = '0123456789ABCDEF';
+    let color = '#';
+    for (var i = 0; i < 6; i++) {
+        color += letters[Math.floor(Math.random() * 16)];
+      }
+      return color;
 }
-//cleargrid
-function clearGrid(){
 
-}
+const size = document.querySelector('#sizeSelector')
+size.addEventListener('input', function(){
+    let val = document.getElementById('sizeSelector').value;
+    removeAllChildNodes(grid);
+    grid.setAttribute('style', `grid-template-columns: repeat(${val}, 2fr); grid-template-rows: repeat(${val}, 2fr);`);
+    for (let i = 0; i < val*val; i++) {
+        const div = document.createElement('div');
+        div.classList.add('cell');
+        div.addEventListener('mouseover', function(event){
+            event.target.style.backgroundColor = 'black';
+        })
+        grid.appendChild(div); 
+    }
+});
+
+const reset = document.querySelector('#reset');
+reset.addEventListener('click', function(){
+    let val = document.getElementById('sizeSelector').value;
+    let cell = grid.children;
+    for (let i = 0; i < val*val; i++) {
+        cell[i].style.backgroundColor = 'white';
+    }
+});
+
+const rgb = document.querySelector('#rgb');
+rgb.addEventListener('click', function(){
+    let val = document.getElementById('sizeSelector').value;
+    let cell = grid.children;
+    for (let i = 0; i < val*val; i++) {
+        cell[i].addEventListener('mouseover', function(event){
+            event.target.style.backgroundColor = getRandomColor();
+        })
+    }
+});
+
+const black = document.querySelector('#black');
+black.addEventListener('click', function(){
+    let val = document.getElementById('sizeSelector').value;
+    let cell = grid.children;
+    for (let i = 0; i < val*val; i++) {
+        cell[i].addEventListener('mouseover', function(event){
+            event.target.style.backgroundColor = 'black';
+        })
+    }
+});
 
 
+
+createGrid();
